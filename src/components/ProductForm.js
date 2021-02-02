@@ -1,17 +1,27 @@
 import { useState } from "react";
-import { createProduct } from "../store/actions";
-import { useDispatch } from "react-redux";
+import { createProduct, updateProduct } from "../store/actions";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import products from "../products";
 
 const ProductForm = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const [product, setProduct] = useState({
-    name: "",
-    description: "",
-    price: "",
-    image: "",
-  });
+  const { productSlug } = useParams();
+  const foundProduct = useSelector((state) =>
+    state.products.find((product) => product.slug === productSlug)
+  );
+  const [product, setProduct] = useState(
+    foundProduct
+      ? foundProduct
+      : {
+          name: "",
+          description: "",
+          price: "",
+          image: "",
+        }
+  );
 
   const handleChange = (event) =>
     setProduct({ ...product, [event.target.name]: event.target.value });
@@ -26,14 +36,16 @@ const ProductForm = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    dispatch(createProduct(product));
-    resetForm();
+
+    if (foundProduct) dispatch(updateProduct(product));
+    else dispatch(createProduct(product));
 
     history.push("/products");
   };
 
   return (
     <form onSubmit={handleSubmit}>
+      <h1>{foundProduct ? "Update" : "Create"} Product</h1>
       <div className="input-group mb-3">
         <div className="input-group-prepend">
           <span className="btn btn-outline-info ">Name</span>
@@ -82,9 +94,9 @@ const ProductForm = () => {
           onChange={handleChange}
         />
       </div>
-      <div className="text-center">
-        <input className="btn btn-info" type="submit" />
-      </div>
+      <button type="submit" className="btn btn-info float-right">
+        {foundProduct ? "Update" : "Create"}
+      </button>
     </form>
   );
 };

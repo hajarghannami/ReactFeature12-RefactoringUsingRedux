@@ -20,18 +20,37 @@ export const ProductWrapper = styled.div`
   }
 `;
 
-export const DeleteButtonStyled = styled.p`
-  color: ${(props) => props.theme.red};
+export const DeleteButtonStyled = styled.button`
+  font-size: 1em;
+
+  border-radius: 3px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  background-color: pink;
+  color: black;
 `;
 
 export const AddButtonStyled = styled.button`
   font-size: 1em;
+
   border-radius: 3px;
   align-items: center;
   justify-content: center;
   display: flex;
   background-color: ${(props) => props.theme.mainColor};
   color: ${(props) => props.theme.backgroundColor};
+`;
+
+export const UpdateButtonStyled = styled.button`
+  font-size: 1em;
+
+  border-radius: 3px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  background-color: white;
+  color: black;
 `;
 
 export const Description = styled.h4`

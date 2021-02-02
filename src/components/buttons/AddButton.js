@@ -3,7 +3,7 @@ import { AddButtonStyled } from "../../styles";
 
 const AddButton = () => {
   return (
-    <Link to="/product-form">
+    <Link to="/products/product-form">
       <AddButtonStyled type="button">Add cookie</AddButtonStyled>
     </Link>
   );

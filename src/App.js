@@ -41,14 +41,15 @@ function App() {
         <Route exact path="/">
           <Home />
         </Route>
+        <Route path={["/products/product-form", "/products/:productSlug/edit"]}>
+          <ProductForm />
+        </Route>
         <Route path="/products/:productSlug">
           <ProductDetail />
         </Route>
+
         <Route path="/products">
           <ProductList />
-        </Route>
-        <Route path="/product-form">
-          <ProductForm />
         </Route>
       </Switch>
     </ThemeProvider>

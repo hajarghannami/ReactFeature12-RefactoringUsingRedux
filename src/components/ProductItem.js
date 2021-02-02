@@ -1,5 +1,6 @@
 // Components
 import DeleteButton from "./buttons/DeleteButton";
+import UpdateButton from "./buttons/UpdateButton";
 import { Link } from "react-router-dom";
 // Styling
 import { ProductWrapper } from "../styles";
@@ -13,6 +14,7 @@ const ProductItem = ({ product, deleteProduct }) => {
       <p>{product.name}</p>
       <p className="product-price">{product.price} KD</p>
       <DeleteButton productId={product.id} deleteProduct={deleteProduct} />
+      <UpdateButton productSlug={product.slug} />
     </ProductWrapper>
   );
 };
