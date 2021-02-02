@@ -5,8 +5,11 @@ import DeleteButton from "./buttons/DeleteButton";
 // Styling
 import { DetailWrapper } from "../styles";
 
-const ProductDetail = ({ products, deleteProduct }) => {
-  const { productSlug } = useParams();
+import { useSelector } from "react-redux";
+
+const ProductDetail = ({ deleteProduct }) => {
+  const products = useSelector((state) => state.products);
+  const productSlug = useParams().productSlug;
   const product = products.find((product) => product.slug === productSlug);
 
   if (!product) return <Redirect to="/products" />;
