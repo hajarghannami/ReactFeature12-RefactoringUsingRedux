@@ -3,7 +3,6 @@ import { createProduct, updateProduct } from "../store/actions";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import products from "../products";
 
 const ProductForm = () => {
   const dispatch = useDispatch();
@@ -26,13 +25,13 @@ const ProductForm = () => {
   const handleChange = (event) =>
     setProduct({ ...product, [event.target.name]: event.target.value });
 
-  const resetForm = () =>
-    setProduct({
-      name: "",
-      description: "",
-      price: "",
-      image: "",
-    });
+  // const resetForm = () =>
+  //   setProduct({
+  //     name: "",
+  //     description: "",
+  //     price: "",
+  //     image: "",
+  //   });
 
   const handleSubmit = (event) => {
     event.preventDefault();

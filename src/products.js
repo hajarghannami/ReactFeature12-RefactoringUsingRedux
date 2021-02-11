@@ -1,4 +1,4 @@
-const products = [
+/* const products = [
   {
     id: 1,
     name: "Chocolate Chip Cookie",
@@ -29,3 +29,4 @@ const products = [
 ];
 
 export default products;
+ */
