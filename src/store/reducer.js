@@ -1,4 +1,3 @@
-import slugify from "react-slugify";
 import { FETCH_PRODUCTS } from "./actions";
 
 const initialState = {
@@ -20,9 +19,6 @@ const reducer = (state = initialState, action) => {
         ),
       };
     case "CREATE_PRODUCT":
-      action.payload.newProduct.id =
-        state.products[state.products.length - 1].id + 1;
-      action.payload.newProduct.slug = slugify(action.payload.newProduct.name);
       return {
         ...state,
         products: [...state.products, action.payload.newProduct],
