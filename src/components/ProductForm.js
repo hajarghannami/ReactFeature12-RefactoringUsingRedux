@@ -25,6 +25,9 @@ const ProductForm = () => {
   const handleChange = (event) =>
     setProduct({ ...product, [event.target.name]: event.target.value });
 
+  const handleImage = (event) =>
+    setProduct({ ...product, image: event.target.files[0] });
+
   // const resetForm = () =>
   //   setProduct({
   //     name: "",
@@ -87,10 +90,9 @@ const ProductForm = () => {
         </div>
         <input
           className="form-control"
-          type="text"
+          type="file"
           name="image"
-          value={product.image}
-          onChange={handleChange}
+          onChange={handleImage}
         />
       </div>
       <button type="submit" className="btn btn-info float-right">
